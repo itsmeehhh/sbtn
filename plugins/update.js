@@ -7,8 +7,8 @@ import axios from'axios';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const owner = 'BrunoSobrino';
-const repo = 'TheMystic-Bot-MD';
+const owner = 'noureddineouafy';
+const repo = 'silana-bot';
 const handler = async (m, { text, usedPrefix, command }) => {
 
 
@@ -80,7 +80,7 @@ if (!text) {
    });
    conn.reply(m.chat, `*تم تحديث روبوتك*🥳`, m);
 
-} else {
+}
    const files = [text];
    function generateRandomIP() {
      return Math.floor(Math.random() * 256) + '.' +
@@ -134,7 +134,6 @@ conn.reply(m.chat, `*الملف ${filePath} غير موجود*!!`, m);
    files.forEach(file => {
      fetchAndSaveFile(file);
    });
-}
 
 };     
 handler.command = /^up(date)?f?$/i;   
