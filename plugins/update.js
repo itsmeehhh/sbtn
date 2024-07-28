@@ -7,8 +7,8 @@ import axios from'axios';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const owner = 'noureddineouafy';
-const repo = 'silana-bot';
+const owner = 'BrunoSobrino';
+const repo = 'TheMystic-Bot-MD';
 const handler = async (m, { text, usedPrefix, command }) => {
 
 
