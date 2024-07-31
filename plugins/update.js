@@ -81,6 +81,7 @@ try {
    m.reply(`*تم تحديث روبوتك*🥳`);
 } catch (error) {
     m.reply('An error occurred while updating. Ensure your bot is in a Git repository.');
+}
 } else {
  try {
    const files = [text];
@@ -139,7 +140,7 @@ m.reply(`*الملف ${filePath} غير موجود*!!`);
    } catch (error) {
     m.reply('An error occurred while updating. Ensure your bot is in a Git repository.');
 }
-
+};
 };     
 
 handler.help = ['update'];
