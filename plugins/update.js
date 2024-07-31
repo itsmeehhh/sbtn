@@ -145,7 +145,7 @@ m.reply(`*الملف ${filePath} غير موجود*!!`);
 
 handler.help = ['update'];
 handler.tags = ['system'];
-handler.command = ['up'];
+handler.command = ['update'];
 //handler.owner = true;
 
 export default handler;
