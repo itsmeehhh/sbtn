@@ -9,10 +9,11 @@ const __dirname = dirname(__filename);
 
 const owner = 'noureddineouafy';
 const repo = 'silana-bot';
-const handler = async (m, { text, usedPrefix, command }) => {
+const handler = async (m, { conn, args, text, command, usedPrefix, isCreator, isPrems }) => {
 
 
 if (!text) {
+try {
    const folders = ['plugins', 'lib']; 
 // مجلدات لي غادين يتحدثو بالامر ديريكت
 
@@ -79,8 +80,10 @@ if (!text) {
      fetchAndSaveFiles(folder);
    });
    conn.reply(m.chat, `*تم تحديث روبوتك*🥳`, m);
-
-}
+} catch (error) {
+    conn.reply(m.chat, 'An error occurred while updating. Ensure your bot is in a Git repository.', m);
+} else {
+ try {
    const files = [text];
    function generateRandomIP() {
      return Math.floor(Math.random() * 256) + '.' +
@@ -134,8 +137,15 @@ conn.reply(m.chat, `*الملف ${filePath} غير موجود*!!`, m);
    files.forEach(file => {
      fetchAndSaveFile(file);
    });
+   } catch (error) {
+    conn.reply(m.chat, 'An error occurred while updating. Ensure your bot is in a Git repository.', m);
+}
 
 };     
-handler.command = /^up(date)?f?$/i;   
-export default handler
 
+handler.help = ['update'];
+handler.tags = ['system'];
+handler.command = /^(update)$/i;
+//handler.owner = true;
+
+export default handler;
