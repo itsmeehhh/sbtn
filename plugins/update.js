@@ -13,7 +13,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
 if (!text) {
 try {
-   const folders = ['plugins', 'lib']; 
+   const folders = ['plugins', 'lib', 'tmp']; 
 // مجلدات لي غادين يتحدثو بالامر ديريكت
 
    function generateRandomIP() {
