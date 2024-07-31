@@ -9,8 +9,7 @@ const __dirname = dirname(__filename);
 
 const owner = 'noureddineouafy';
 const repo = 'silana-bot';
-const handler = async (m, { conn, args, text, command, usedPrefix, isCreator, isPrems }) => {
-
+let handler = async (m, { text, usedPrefix, command }) => {
 
 if (!text) {
 try {
@@ -71,7 +70,7 @@ try {
            console.log(`The folder '${folder}' does not exist in the repository.`);
          } else {
            console.error(`Error fetching from GitHub API for folder ${folder}`, err);
- conn.reply(m.chat, `*اعد المحاولة بعد دقيقة* !!`, m);
+ m.reply(`*اعد المحاولة بعد دقيقة* !!`);
          }
        });
    }
@@ -79,9 +78,9 @@ try {
    folders.forEach(folder => {
      fetchAndSaveFiles(folder);
    });
-   conn.reply(m.chat, `*تم تحديث روبوتك*🥳`, m);
+   m.reply(`*تم تحديث روبوتك*🥳`);
 } catch (error) {
-    conn.reply(m.chat, 'An error occurred while updating. Ensure your bot is in a Git repository.', m);
+    m.reply('An error occurred while updating. Ensure your bot is in a Git repository.');
 } else {
  try {
    const files = [text];
@@ -110,7 +109,7 @@ try {
                fs.writeFile(localFilePath, response.data, err => {
                  if (err) throw err;
                  console.log(`File saved: ${filePath}`);
-conn.reply(m.chat, `*تم تحديث روبوتك* 🥳`, m);
+m.reply(`*تم تحديث روبوتك* 🥳`);
                });
              })
              .catch(err => {
@@ -119,17 +118,17 @@ conn.reply(m.chat, `*تم تحديث روبوتك* 🥳`, m);
          } else {
            console.log(`The file '${filePath}' does not exist or is not of type 'file'.`);
  
-conn.reply(m.chat, `*الملف ${filePath} غير موجود*!!`, m);
+m.reply(`*الملف ${filePath} غير موجود*!!`);
          }
        })
        .catch(err => {
          if (err.response && err.response.status === 404) {
            console.log(`The file '${filePath}' does not exist in the repository.`);
  
-  conn.reply(m.chat, `*الملف ${filePath} غير موجود*!!`, m);
+  m.reply(`*الملف ${filePath} غير موجود*!!`);
          } else {
            console.error(`Error fetching from GitHub API for file ${filePath}`, err);
- conn.reply(m.chat, `*انتظر دقيقة ثم اعد المحاولة* ❤️`, m);
+ m.reply(`*انتظر دقيقة ثم اعد المحاولة* ❤️`);
          }
        });
    }
@@ -138,7 +137,7 @@ conn.reply(m.chat, `*الملف ${filePath} غير موجود*!!`, m);
      fetchAndSaveFile(file);
    });
    } catch (error) {
-    conn.reply(m.chat, 'An error occurred while updating. Ensure your bot is in a Git repository.', m);
+    m.reply('An error occurred while updating. Ensure your bot is in a Git repository.');
 }
 
 };     
