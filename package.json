@@ -8,8 +8,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "pm2 start . --attach --name levanter",
+    "stop": "pm2 stop levanter",
+    "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp"
   },
   "keywords": [
     "termux-whatsapp-bot",
